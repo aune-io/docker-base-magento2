@@ -1,8 +1,5 @@
 FROM php:7.1-apache
 
-# Install pdo_mysql extension
-RUN docker-php-ext-install pdo_mysql
-
 # Enable apache mod_rewrite
 RUN a2enmod rewrite
 
