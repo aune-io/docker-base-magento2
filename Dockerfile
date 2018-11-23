@@ -9,14 +9,15 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # Install dependencies
-ENV BUILD_DEPS="zlib1g-dev libicu-dev g++ libpng-dev libmcrypt-dev libxml2-dev"
+ENV BUILD_DEPS="zlib1g-dev libicu-dev g++"
+ENV LIB_DEPS="libpng-dev libmcrypt-dev libxml2-dev libfreetype6-dev"
 RUN apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS
 
 # Enable mysql extension
 RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml soap zip
 
 # Purge apt dependencies
-#RUN apt-get purge -y --auto-remove $BUILD_DEPS
+RUN apt-get purge -y --auto-remove $BUILD_DEPS
 
 # Image metadata
 ARG VCS_REF
