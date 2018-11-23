@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS
 RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml soap zip
 
 # Purge apt dependencies
-RUN apt-get purge -y --auto-remove $BUILD_DEPS
+#RUN apt-get purge -y --auto-remove $BUILD_DEPS
 
 # Image metadata
 ARG VCS_REF
