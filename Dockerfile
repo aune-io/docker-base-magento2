@@ -5,8 +5,9 @@ RUN a2enmod rewrite
 
 # Change document root
 ENV APACHE_DOCUMENT_ROOT /var/www/html/pub
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+# Copy Apache configuration for VirtualHost
+COPY config/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Apply production PHP configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
