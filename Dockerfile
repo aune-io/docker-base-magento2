@@ -8,6 +8,12 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/pub
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+# Apply production PHP configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# Add opcache configuration
+COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
+
 # Install dependencies
 ENV BUILD_DEPS="zlib1g-dev libicu-dev g++"
 ENV LIB_DEPS="libpng-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev"
