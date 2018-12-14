@@ -20,6 +20,15 @@ RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml xsl 
 RUN apt-get purge -y --auto-remove $BUILD_DEPS
 
 # Image metadata
+ARG BUILD_DATE
 ARG VCS_REF
-LABEL org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/aune-io/docker-base-magento2/"
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="Magento 2 base image" \
+      org.label-schema.description="Base image for a containerized Magento 2 environment." \
+      org.label-schema.url="https://github.com/aune-io/docker-base-magento2/" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/aune-io/docker-base-magento2/" \
+      org.label-schema.vendor="Aune Limited" \
+      org.label-schema.version=$VERSION \
+      org.label-schema.schema-version="1.0"
