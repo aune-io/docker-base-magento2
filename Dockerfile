@@ -17,7 +17,7 @@ COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ zlib1g-dev libicu-dev \
-    libpng-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev
+    libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
 # Enable mysql extension
 RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml xsl soap zip
