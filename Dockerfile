@@ -15,15 +15,12 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
 
 # Install dependencies
-ENV BUILD_DEPS="zlib1g-dev libicu-dev g++"
-ENV LIB_DEPS="libpng-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev"
-RUN apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS $LIB_DEPS
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    g++ zlib1g-dev libicu-dev \
+    libpng-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
 # Enable mysql extension
 RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml xsl soap zip
-
-# Purge apt dependencies
-RUN apt-get purge -y --auto-remove $BUILD_DEPS
 
 # Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" ; \
