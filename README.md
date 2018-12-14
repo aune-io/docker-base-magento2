@@ -6,7 +6,7 @@ Base image for a container running Magento 2
 [![](https://images.microbadger.com/badges/commit/aune/magento2.svg)](http://microbadger.com/images/aune/magento2)
 
 ## Features
-* Based on the official [php:7.1-apache](https://github.com/docker-library/php/blob/67efd89c36bf15cb5ba096213e0536b2cab5eb38/7.1/stretch/apache/Dockerfile)
+* Based on the official [php:7.2-apache](https://github.com/docker-library/php/blob/67efd89c36bf15cb5ba096213e0536b2cab5eb38/7.2/stretch/apache/Dockerfile)
 * Enables Apache mod_rewrite
 * Installs all PHP dependencies
 * Sets `/var/www/html/pub` as Apache root

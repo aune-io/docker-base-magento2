@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 
 # Enable apache mod_rewrite
 RUN a2enmod rewrite
