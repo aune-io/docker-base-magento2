@@ -20,7 +20,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ zlib1g-dev libicu-dev \
     libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
-# Enable mysql extension
+# Configure GD extension to include jpeg and freetype
+RUN docker-php-ext-configure gd \
+        --enable-gd-native-ttf \
+        --with-freetype-dir=/usr/include/freetype2 \
+        --with-png-dir=/usr/include \
+        --with-jpeg-dir=/usr/include
+
+# Enable PHP extensions
 RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml xsl soap zip
 
 # Install Composer
