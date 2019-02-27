@@ -18,7 +18,7 @@ COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ zlib1g-dev libicu-dev \
-    libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libfreetype6-dev libxslt1-dev
+    libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
 # Configure GD extension to include jpeg and freetype
 RUN docker-php-ext-configure gd \
@@ -28,7 +28,7 @@ RUN docker-php-ext-configure gd \
         --with-jpeg-dir=/usr/include
 
 # Enable PHP extensions
-RUN docker-php-ext-install bcmath gd intl mbstring mcrypt pdo pdo_mysql xml xsl soap zip
+RUN docker-php-ext-install bcmath gd intl mbstring pdo pdo_mysql xml xsl soap zip
 
 # Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" ; \
