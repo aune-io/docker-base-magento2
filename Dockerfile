@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.3-apache
 
 # Enable apache mod_rewrite
 RUN a2enmod rewrite
@@ -17,7 +17,7 @@ COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    g++ zlib1g-dev libicu-dev \
+    g++ zlib1g-dev libicu-dev libzip-dev \
     libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
 # Configure GD extension to include jpeg and freetype
