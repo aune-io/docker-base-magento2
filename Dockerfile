@@ -28,7 +28,7 @@ RUN docker-php-ext-configure gd \
         --with-jpeg-dir=/usr/include
 
 # Enable PHP extensions
-RUN docker-php-ext-install bcmath gd intl mbstring pdo pdo_mysql xml xsl soap zip
+RUN docker-php-ext-install bcmath gd intl mbstring pdo pdo_mysql xml xsl soap sockets zip
 
 # Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" ; \
