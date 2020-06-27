@@ -17,7 +17,7 @@ COPY config/10-opcache.ini "$PHP_INI_DIR/conf.d/"
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    unzip git g++ zlib1g-dev libicu-dev libzip-dev \
+    unzip ssh git g++ zlib1g-dev libicu-dev libzip-dev \
     libpng-dev libjpeg-dev libxml2-dev libfreetype6-dev libxslt1-dev
 
 # Configure GD extension to include jpeg and freetype
