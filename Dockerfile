@@ -31,9 +31,7 @@ RUN docker-php-ext-configure gd \
 RUN docker-php-ext-install bcmath gd intl mbstring pdo pdo_mysql xml xsl soap sockets zip
 
 # Install Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" ; \
-    php composer-setup.php ; \
-    php -r "unlink('composer-setup.php');" ; \
+RUN curl -O https://getcomposer.org/download/1.10.22/composer.phar ; \
     chmod +x composer.phar ; \
     mv composer.phar /usr/local/bin/composer
 
